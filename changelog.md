@@ -1,6 +1,15 @@
 # Release Notes
 
-## Smartstore 5.2.0
+## Smartstore 6.0.1
+
+### Bugfixes
+
+- The bootstrap-icons.svg path resolution is missing the base path.
+- Summernote HTML editor:
+  - Code sync adds a line break after caret position (caused by outdated beautify library).
+  - AI: HTMLeditor does not record undo after answer is applied.
+
+## Smartstore 6.0.0
 
 ### Breaking Changes
 - Removed Sofort provider from PayPal module (disabled by PayPal on 18.04.2024)
@@ -37,6 +46,7 @@
 - **DevTools**: New widget zone preview panel
   - Lists all zones in a menu
   - Zones can be temporarily toggled
+- #371 Importer for manufacturers.
 - Toggle password visibility
 - New app setting for MS SQL Server compatibility level
 - Enhanced database optimization and vacuum operations
@@ -47,15 +57,18 @@
   - Setting to place the search hits of unavailable products further back in the search list.
   - Finding products by keywords (e.g. product compatibility list). Also added product meta keywords to the search index.
   - Added price calculation options for the price to be indexed.
-- Affiliates
-  - #896 Added a cart rule for affiliates.
-  - Added a button to remove the assignment of a customer to an affiliate on customer edit page.
+- Affiliates: Added a button to remove the assignment of a customer to an affiliate on customer edit page.
 - Import news from RSS news feeds.
-- #971 Add a cart rule to check if the current customer is authenticated with a certain external authentication method.
 - Reverse proxy: added support for `X-Forwarded-Prefix` header (for `PathBase` resolution)
 - Page Builder
 	- Added **AudioPlayer** block
-- Rule Builder: Added rules for VAT number status, billing/shipping to EU and billing/shipping to company.
+- Added cart rules to Rule Builder
+  - #971 Customer's external authentication method
+  - #896 Customer is an affiliate
+  - VAT number status
+  - Tax exempt
+  - Billing/shipping to EU
+  - Billing/shipping to company
 - Product details
   - #997 Added a setting to disable display of product tags.
   - #1127 Display reward points.
@@ -196,6 +209,8 @@
 - PayPal:
   - Fixed payment discount problem (discount from a formerly choosen payment method was applied).
   - Fixed VAT exempt & currency conversion problems.
+  - Only the frist refund executed from the backend was accepted by PayPal.
+  - Fixed unhandled payer action required problem for wallet payment methods.  
 - #1042 Fixed broken roxy file manager.
 - #969 Promo badges are not rendered in frontend due to type mismatch.
 - Google Analytics: Fixed problem with single quotation mark in category name.
@@ -221,8 +236,7 @@
 - Fixed `SqlException` "String or binary data would be truncated" when generating URL slugs that are too long.
 - Fixed orders of deleted customers were not displayed in order grid.
 - `ProductRuleEvaluatorTask` should also take unpublished categories into account.
-- PayPal: Only the frist refund executed from the backend was accepted by PayPal.
-- PayPal: Fixed unhandled payer action required problem for wallet payment methods.
+- Fixed the generic attributes grid always displayed only one data page.
 
 ## Smartstore 5.1.0
 
