@@ -3,6 +3,9 @@ using FluentValidation;
 
 namespace Smartstore.Core.Installation
 {
+    /// <summary>
+    /// App_Data/Tenants/Default/Settings.txt
+    /// </summary>
     public partial class InstallationModel
     {
         [DataType(DataType.EmailAddress)]

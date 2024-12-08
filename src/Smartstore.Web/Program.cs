@@ -30,6 +30,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -59,6 +60,7 @@ var configuration = (IConfiguration)builder.Configuration
     .AddJsonFile("Config/usersettings.json", optional: true, reloadOnChange: true)
     .AddJsonFile($"Config/usersettings.{environmentName}.json", optional: true);
 
+
 // Setup Serilog logging
 Log.Logger = SetupSerilog(configuration);
 
@@ -71,6 +73,7 @@ builder.Host
 
 var startupLogger = new SerilogLoggerFactory(Log.Logger).CreateLogger("File");
 var appContext = new SmartApplicationContext(builder.Environment, configuration, startupLogger);
+
 var engine = EngineFactory.Create(appContext.AppConfiguration);
 var engineStarter = engine.Start(appContext);
 

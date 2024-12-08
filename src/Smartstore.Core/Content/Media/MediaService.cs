@@ -190,6 +190,12 @@ namespace Smartstore.Core.Content.Media
             return null;
         }
 
+        /// <summary>
+        /// local file system / database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="flags"></param>
+        /// <returns></returns>
         public async Task<MediaFileInfo> GetFileByIdAsync(int id, MediaLoadFlags flags = MediaLoadFlags.None)
         {
             if (id <= 0)
